@@ -1,0 +1,28 @@
+import re
+
+def main():
+    # Sample text
+    text = """
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Phone numbers: 123-456-7890, 987.654.3210, (555) 123-4567
+    Email addresses: example@example.com, another.email@example.co.uk
+    """
+
+    # Define regular expressions
+    phone_pattern = re.compile(r'\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b')
+    email_pattern = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+
+    # Search for phone numbers
+    phone_numbers = phone_pattern.findall(text)
+    print("Phone numbers found:")
+    for number in phone_numbers:
+        print(number)
+
+    # Search for email addresses
+    email_addresses = email_pattern.findall(text)
+    print("\nEmail addresses found:")
+    for email in email_addresses:
+        print(email)
+
+if __name__ == "__main__":
+    main()
